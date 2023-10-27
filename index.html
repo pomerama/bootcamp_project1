@@ -4,21 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Awesome game</title>
     <link rel="stylesheet" href="./src/css/style.css">
 </head>
 
 <body>
-    <h1>Settinp up the project</h1>
-    <p>Typescript</p>
-    <p>Folder structure</p>
-    <p>Tests (with Jest)</p>
-    <p>Git</p>
-    <p>Github Pages</p>
-    <p>JQuery</p>
+    <div id="start-screen" class="screen">
+        <h1>Awesome game</h1>
+        <button id="start-game-button" class="btn" type="button">Start game</button>
+    </div>
 
-    <script src="./dist/js/someOther.js"></script>
-    <script src="./dist/js/index.js"></script>
+    <div id="game-screen" class="screen">
+        <h1>Game screen</h1>
+        <div class="game-board">
+            <div class="player">
+                <img class="player-spritesheet" src="./assets/stick_man_spritesheet.png" alt="players character">
+            </div>
+        </div>
+        <button id="end-game-button" class="btn" type="button">End game</button>
+    </div>
+
+    <div id="end-screen" class="screen">
+        <h1>End screen</h1>
+        <button id="restart-game-button" class="btn" type="button">Restart game</button>
+    </div>
+
+    <script type="module" src="./dist/js/index.js"></script>
 </body>
 
 </html>
