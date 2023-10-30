@@ -1,5 +1,6 @@
 export class Player {
     constructor() {
+        this.lives = 10;
         this.isJumping = false;
         this.playerElement = document.querySelector(".player");
     }

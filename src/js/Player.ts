@@ -1,8 +1,9 @@
 export class Player {
     playerElement: HTMLElement;
     isJumping: boolean;
-
+    lives: number;
     constructor() {
+        this.lives = 10;
         this.isJumping = false;
         this.playerElement = document.querySelector(".player")!;
     }
