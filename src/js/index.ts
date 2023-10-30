@@ -2,33 +2,23 @@ import { Game } from "./Game.js"
 
 let game: Game;
 
-const startScreen = document.getElementById("start-screen") as HTMLDivElement;
-const gameScreen = document.getElementById("game-screen") as HTMLDivElement;
-const endScreen = document.getElementById("end-screen") as HTMLDivElement;
-
 const startGameButton = document.getElementById("start-game-button") as HTMLButtonElement;
 const endGameButton = document.getElementById("end-game-button") as HTMLButtonElement;
 const restartGameButton = document.getElementById("restart-game-button") as HTMLButtonElement;
 
 startGameButton.addEventListener("click", button => {
-    startScreen.style.display = "none";
-    gameScreen.style.display = "grid";
-    endScreen.style.display = "none";
-
     game = new Game();
     game.start();
 });
 
 endGameButton.addEventListener("click", button => {
-    startScreen.style.display = "none";
-    gameScreen.style.display = "none";
-    endScreen.style.display = "grid";
+    game.end();
 })
 
 restartGameButton.addEventListener("click", button => {
-    startScreen.style.display = "grid";
-    gameScreen.style.display = "none";
-    endScreen.style.display = "none";
+    game.end()
+    game = new Game();
+    game.start();
 })
 
 document.addEventListener("keypress", event => {

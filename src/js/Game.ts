@@ -13,6 +13,7 @@ export class Game {
     gameBoard: HTMLDivElement;
     gameBoardWidth: number;
     gameBoardHeight: number;
+    gameInfo: HTMLDivElement;
     constructor() {
         this.enemies = [];
         this.bullets = []
@@ -21,6 +22,7 @@ export class Game {
         this.gameScreen = document.getElementById("game-screen") as HTMLDivElement;
         this.endScreen = document.getElementById("end-screen") as HTMLDivElement;
         this.gameBoard = document.getElementById("game-board") as HTMLDivElement;
+        this.gameInfo = document.getElementById("game-info") as HTMLDivElement;
         this.gameBoardWidth = 800;
         this.gameBoardHeight = 600;
 
@@ -35,6 +37,11 @@ export class Game {
         this.bullets.push(newBullet);
     }
     start() {
+        this.status = 'running';
+        this.startScreen.style.display = "none";
+        this.gameScreen.style.display = "grid";
+        this.endScreen.style.display = "none";
+        this.gameInfo.style.display = 'block';
         this.gameLoop()
     }
     end() {
@@ -43,7 +50,10 @@ export class Game {
         this.enemies.forEach((en) => {
             en.element.remove();
         })
+        this.enemies = [];
+        this.bullets = [];
         this.gameScreen.style.display = 'none';
+        this.gameInfo.style.display = 'none';
         this.endScreen.style.display = 'block';
     }
     gameLoop() {
@@ -55,7 +65,6 @@ export class Game {
         if (this.player.lives <= 0) this.end();
 
         // spawn new enemy
-
         if (this.enemies.length == 0 && Math.random() > 0.5) {
             let newEnemy = new Enemy(this.gameBoard);
             this.enemies.push(newEnemy);
@@ -117,8 +126,8 @@ export class Game {
         let livesDisplay = document.getElementById("lives") as HTMLElement;
         let enemiesKilledDisplay = document.getElementById("enemies-killed") as HTMLElement;
 
-        livesDisplay.innerHTML = `${this.player.lives}`;
-        enemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled}`;
+        livesDisplay.innerHTML = `Lives: ${this.player.lives}`;
+        enemiesKilledDisplay.innerHTML = `Enemies killed: ${this.player.enemiesKilled}`;
     }
     shootBullet() {
         let currentBullet: Bullet;

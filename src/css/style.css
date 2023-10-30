@@ -17,15 +17,10 @@ main {
     flex-wrap: wrap;
 }
 
-aside {
-    margin-left: 50px;
-
-    border: 1px solid green;
-}
-
-aside .game-info {
-    margin-top: 100px;
-
+#game-info {
+    margin-top: 80px;
+    margin-left: 30px;
+    padding: 20px;
     border: 1px solid pink;
 }
 
@@ -50,24 +45,6 @@ aside .game-info {
     width: 100px;
     height: 50px;
     margin-top: 50px;
-}
-
-.player {
-    width: calc(25px * var(--pixel-size));
-    height: calc(25px * var(--pixel-size));
-    /* hide the rest of the spritesheet */
-    overflow: hidden;
-    /* put the player at the bottom of the game board*/
-    grid-row: 2;
-    /* position: relative; */
-    /* left: 0vw; */
-
-    border: 1px solid green;
-}
-
-.player-spritesheet {
-    width: calc(100px * var(--pixel-size));
-    animation: moveSpritesheet 0.5s steps(4) infinite;
 }
 
 .in-jump {

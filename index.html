@@ -20,11 +20,7 @@
 
         <div id="game-screen" class="screen">
             <h1>Game screen</h1>
-            <div id="game-board">
-                <div class="player">
-                    <img class="player-spritesheet" src="./assets/stick_man_spritesheet.png" alt="players character">
-                </div>
-            </div>
+            <div id="game-board"></div>
             <button id="end-game-button" class="btn" type="button">End game</button>
         </div>
 
@@ -34,14 +30,13 @@
         </div>
 
         <aside>
-            <div class="game-info">
+            <div id="game-info">
                 <h2>Info</h2>
-                <p>Lives: <span id="lives"></span></p>
-                <p>Enemies killed: <span id="enemies-killed"></span></p>
+                <p><span id="lives"></span></p>
+                <p><span id="enemies-killed"></span></p>
                 <p>Use "w" to jump</p>
                 <p>Use "space" to shoot</p>
             </div>
-
         </aside>
 
         <!-- TODO 

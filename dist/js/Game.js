@@ -11,6 +11,7 @@ export class Game {
         this.gameScreen = document.getElementById("game-screen");
         this.endScreen = document.getElementById("end-screen");
         this.gameBoard = document.getElementById("game-board");
+        this.gameInfo = document.getElementById("game-info");
         this.gameBoardWidth = 800;
         this.gameBoardHeight = 600;
         this.gameBoard.style.width = `${this.gameBoardWidth}px`;
@@ -23,6 +24,11 @@ export class Game {
         this.bullets.push(newBullet);
     }
     start() {
+        this.status = 'running';
+        this.startScreen.style.display = "none";
+        this.gameScreen.style.display = "grid";
+        this.endScreen.style.display = "none";
+        this.gameInfo.style.display = 'block';
         this.gameLoop();
     }
     end() {
@@ -31,7 +37,10 @@ export class Game {
         this.enemies.forEach((en) => {
             en.element.remove();
         });
+        this.enemies = [];
+        this.bullets = [];
         this.gameScreen.style.display = 'none';
+        this.gameInfo.style.display = 'none';
         this.endScreen.style.display = 'block';
     }
     gameLoop() {
@@ -99,8 +108,8 @@ export class Game {
     updateLivesKills() {
         let livesDisplay = document.getElementById("lives");
         let enemiesKilledDisplay = document.getElementById("enemies-killed");
-        livesDisplay.innerHTML = `${this.player.lives}`;
-        enemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled}`;
+        livesDisplay.innerHTML = `Lives: ${this.player.lives}`;
+        enemiesKilledDisplay.innerHTML = `Enemies killed: ${this.player.enemiesKilled}`;
     }
     shootBullet() {
         let currentBullet;
