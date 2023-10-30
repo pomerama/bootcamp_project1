@@ -59,6 +59,9 @@ export class Game {
         }
         this.enemies.forEach(enemy => {
             enemy.move();
+            if (Math.random() > 0.1) {
+                enemy.jump();
+            }
             // check for collission with player
             let playerBox = this.player.element.getBoundingClientRect();
             let enemyBox = enemy.element.getBoundingClientRect();
