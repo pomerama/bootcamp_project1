@@ -24,7 +24,10 @@ restartGameButton.addEventListener("click", button => {
     endScreen.style.display = "none";
 });
 document.addEventListener("keypress", event => {
-    if (event.key == 'w') {
+    if (event.code == 'KeyW') {
         game.player.jump();
+    }
+    if (event.code == 'Space') {
+        game.shootBullet();
     }
 });

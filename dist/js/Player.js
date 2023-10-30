@@ -1,5 +1,6 @@
 export class Player {
-    constructor() {
+    constructor(gameBoard) {
+        this.gameBoard = gameBoard;
         this.lives = 10;
         this.enemiesKilled = 0;
         this.isJumping = false;

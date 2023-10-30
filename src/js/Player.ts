@@ -1,9 +1,12 @@
 export class Player {
+    gameBoard: HTMLDivElement;
     element: HTMLElement;
     isJumping: boolean;
     lives: number;
     enemiesKilled: number;
-    constructor() {
+    
+    constructor(gameBoard: HTMLDivElement) {
+        this.gameBoard = gameBoard;
         this.lives = 10;
         this.enemiesKilled = 0;
         this.isJumping = false;
@@ -21,4 +24,5 @@ export class Player {
 
         this.isJumping = false;
     }
+    
 }

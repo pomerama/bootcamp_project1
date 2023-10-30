@@ -1,10 +1,11 @@
 import { Player } from "./Player.js";
 import { Enemy } from "./Enemy.js";
+import { Bullet } from "./Bullet.js";
 export class Game {
     constructor() {
         this.status = 'running' || 'finished';
         this.enemies = [];
-        this.player = new Player();
+        this.bullets = [];
         this.status = 'running';
         this.startScreen = document.getElementById("start-screen");
         this.gameScreen = document.getElementById("game-screen");
@@ -17,6 +18,9 @@ export class Game {
         this.gameBoard.style.display = 'grid';
         this.gameBoard.style.gridTemplateRows = '1fr auto';
         this.gameBoard.style.border = '1px solid brown';
+        this.player = new Player(this.gameBoard);
+        let newBullet = new Bullet(this.gameBoard);
+        this.bullets.push(newBullet);
     }
     start() {
         this.gameLoop();
@@ -46,21 +50,42 @@ export class Game {
         }
         this.enemies.forEach(enemy => {
             enemy.move();
-            // check for collission
+            // check for collission with player
             let playerBox = this.player.element.getBoundingClientRect();
             let enemyBox = enemy.element.getBoundingClientRect();
             if (this.didCollide(playerBox, enemyBox)) {
+                this.player.lives--;
                 enemy.element.remove();
                 this.enemies.splice(this.enemies.indexOf(enemy), 1);
-                this.player.lives--;
             }
             // enemy moved out of screen
             if (enemy.left <= -this.gameBoardWidth) {
                 enemy.element.remove();
                 this.enemies.splice(this.enemies.indexOf(enemy), 1);
             }
-            this.updateLivesKills();
+            // check for collission with bullet
+            if (this.bullets.length > 0) {
+                let currentBullet = this.bullets[0];
+                let bulletBox = currentBullet.element.getBoundingClientRect();
+                if (this.didCollide(bulletBox, enemyBox)) {
+                    this.player.enemiesKilled++;
+                    enemy.element.remove();
+                    this.enemies.splice(this.enemies.indexOf(enemy), 1);
+                    currentBullet.element.remove();
+                    this.bullets.splice(this.bullets.indexOf(currentBullet), 1);
+                }
+            }
         });
+        if (this.bullets.length > 0) {
+            let currentBullet = this.bullets[0];
+            let bulletBox = currentBullet.element.getBoundingClientRect();
+            if (bulletBox.left >= this.gameBoardWidth) {
+                console.log("bullet left screen");
+                currentBullet.element.remove();
+                this.bullets.splice(this.bullets.indexOf(currentBullet), 1);
+            }
+        }
+        this.updateLivesKills();
     }
     didCollide(firstBox, secondBox) {
         if (firstBox.right >= secondBox.left &&
@@ -76,5 +101,19 @@ export class Game {
         let enemiesKilledDisplay = document.getElementById("enemies-killed");
         livesDisplay.innerHTML = `${this.player.lives}`;
         enemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled}`;
+    }
+    shootBullet() {
+        let currentBullet;
+        if (this.bullets.length > 0) {
+            currentBullet = this.bullets[0];
+        }
+        else {
+            currentBullet = new Bullet(this.gameBoard);
+            this.bullets.push(currentBullet);
+        }
+        currentBullet.element.style.display = 'block';
+        currentBullet.element.style.left = `${this.player.element.getBoundingClientRect().right}px`;
+        currentBullet.element.style.top = `${this.player.element.getBoundingClientRect().top + 50}px`;
+        currentBullet.element.style.animation = 'bullet-animation 0.7s linear';
     }
 }
