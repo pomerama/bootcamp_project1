@@ -116,6 +116,25 @@ aside .game-info {
     }
 }
 
+#screen-too-small {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    #screen-too-small {
+        display: block;
+    }
+
+    #start-screen,
+    #game-screen,
+    #end-screen,
+    aside {
+        display: none;
+    }
+}
+
+
+
 /*
 TODO
 
