@@ -13,17 +13,21 @@ export class Player {
 
         this.element = document.createElement("div");
         this.element.classList.add("player");
-        this.element.style.width = `calc(25px * var(--pixel-size))`;
-        this.element.style.height = `calc(25px * var(--pixel-size))`;
+        // this.element.style.width = `calc(25px * var(--pixel-size))`;
+        this.element.style.height = `130px`;
+        this.element.style.width = '85px';
+
         this.element.style.overflow = 'hidden';
         this.element.style.gridRow = '2';
-        // this.element.style.border = `1px solid green`;
+        this.element.style.border = `1px solid green`;
 
         let imgElement = document.createElement("img");
         imgElement.classList.add("player-spritesheet");
         imgElement.src = "./assets/stick_man_spritesheet.png";
         imgElement.style.width = `calc(100px * var(--pixel-size))`;
         imgElement.style.animation = `moveSpritesheet 0.5s steps(4) infinite`;
+        imgElement.style.marginLeft = '-60px';
+        imgElement.style.marginTop = '-10px';
         this.element.appendChild(imgElement);
 
         this.gameBoard.appendChild(this.element);

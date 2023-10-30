@@ -65,6 +65,7 @@ export class Game {
         if (this.player.lives <= 0) this.end();
 
         // spawn new enemy
+
         if (this.enemies.length == 0 && Math.random() > 0.5) {
             let newEnemy = new Enemy(this.gameBoard);
             this.enemies.push(newEnemy);
