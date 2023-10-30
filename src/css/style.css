@@ -52,16 +52,6 @@ aside .game-info {
     margin-top: 50px;
 }
 
-#game-board {
-    width: 800px;
-    height: 600px;
-    display: grid;
-    /* second row auto adjust to player, the rest is in first row*/
-    grid-template-rows: 1fr auto;
-
-    border: 1px solid blue;
-}
-
 .player {
     width: calc(25px * var(--pixel-size));
     height: calc(25px * var(--pixel-size));
