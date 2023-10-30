@@ -12,7 +12,7 @@ export class Game {
         this.endScreen = document.getElementById("end-screen");
         this.gameBoard = document.getElementById("game-board");
         this.gameInfo = document.getElementById("game-info");
-        this.gameBoardWidth = 800;
+        this.gameBoardWidth = 1000;
         this.gameBoardHeight = 600;
         this.gameBoard.style.width = `${this.gameBoardWidth}px`;
         this.gameBoard.style.height = `${this.gameBoardHeight}px`;
