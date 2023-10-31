@@ -53,6 +53,7 @@ export class Game {
         this.gameInfo.style.display = 'block';
         this.gameLoop()
     }
+
     loadGameStats() {
         const savedGameStats = localStorage.getItem("gameStats")
         if ((savedGameStats) && (savedGameStats.length > 0)) {
@@ -62,6 +63,7 @@ export class Game {
             }
         }
     }
+
     saveGameStats() {
         this.loadGameStats();
         const currentGameStats = {
@@ -72,9 +74,22 @@ export class Game {
         this.gameStats.push(currentGameStats);
         localStorage.setItem("gameStats", JSON.stringify(this.gameStats));
     }
-    end() {
-        this.status = 'finished';
 
+    displayGameStats() {
+        let highScoreContainer = document.getElementById("high-score") as HTMLDivElement;
+        let highScoreUl = document.createElement("ul");
+
+        for (let i = this.gameStats.length - 1; i >= 0; i--) {
+            if (this.gameStats.length - i <= 10) {
+                let highScoreLi = document.createElement("li");
+                highScoreLi.innerHTML = `${this.gameStats[i].name} | ${this.gameStats[i].enemiesKilled} | ${this.gameStats[i].time}`;
+                highScoreUl.appendChild(highScoreLi);
+            }
+        }
+        highScoreContainer.appendChild(highScoreUl);
+    }
+
+    wonLostDisplay() {
         if (this.won) {
             let wonDisplay = document.getElementById("end-won") as HTMLElement;
             wonDisplay.style.display = 'block'
@@ -86,18 +101,30 @@ export class Game {
             let lostDisplay = document.getElementById("end-lost") as HTMLElement;
             lostDisplay.style.display = 'block'
         }
+    }
 
+    nameEnemiesKilledTimeDisplay() {
         let nameDisplays = document.querySelectorAll(".player-name") as NodeListOf<HTMLElement>
         Array.from(nameDisplays).forEach((display: HTMLElement) => {
-            display.innerHTML = `${this.player.name}`;
+            display.innerHTML = `${this.player.name} `;
         })
 
         let endEnemiesKilledDisplay = document.getElementById("end-enemies-killed") as HTMLElement;
-        endEnemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled}`;
+        endEnemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled} `;
         let endTimeDisplay = document.getElementById("end-time") as HTMLElement;
-        endTimeDisplay.innerHTML = `${this.chronometer.split()}`
+        endTimeDisplay.innerHTML = `${this.chronometer.split()} `
+    }
+
+    end() {
+        this.status = 'finished';
+
+        this.wonLostDisplay();
+
+        this.nameEnemiesKilledTimeDisplay();
 
         this.saveGameStats();
+
+        this.displayGameStats();
 
         this.player.element.remove();
         this.enemies.forEach((en) => {
@@ -186,9 +213,9 @@ export class Game {
 
     updateLivesKills() {
         let livesDisplay = document.getElementById("info-lives") as HTMLElement;
-        livesDisplay.innerHTML = `${this.player.lives}`;
+        livesDisplay.innerHTML = `${this.player.lives} `;
         let enemiesKilledDisplay = document.getElementById("info-enemies-killed") as HTMLElement;
-        enemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled}`
+        enemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled} `
     }
     shootBullet() {
         let currentBullet: Bullet;
@@ -199,8 +226,8 @@ export class Game {
             this.bullets.push(currentBullet);
         }
         currentBullet.element.style.display = 'block';
-        currentBullet.element.style.left = `${this.player.element.getBoundingClientRect().right}px`;
-        currentBullet.element.style.top = `${this.player.element.getBoundingClientRect().top + 50}px`;
+        currentBullet.element.style.left = `${this.player.element.getBoundingClientRect().right} px`;
+        currentBullet.element.style.top = `${this.player.element.getBoundingClientRect().top + 50} px`;
         currentBullet.element.style.animation = 'bullet-animation 0.7s linear'
     }
 }
