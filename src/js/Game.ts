@@ -1,11 +1,13 @@
 import { Player } from "./Player.js"
 import { Enemy } from "./Enemy.js"
 import { Bullet } from "./Bullet.js"
+import { Chronometer } from "./Chronometer.js";
 
 export class Game {
     enemies: Array<Enemy>;
     player: Player;
     bullets: Array<Bullet>;
+    chronometer: Chronometer;
     status = 'running' || 'finished';
     startScreen: HTMLDivElement;
     gameScreen: HTMLDivElement;
@@ -14,6 +16,7 @@ export class Game {
     gameBoardWidth: number;
     gameBoardHeight: number;
     gameInfo: HTMLDivElement;
+
     constructor() {
         this.enemies = [];
         this.bullets = []
@@ -34,8 +37,10 @@ export class Game {
 
         this.player = new Player(this.gameBoard);
         let newBullet = new Bullet(this.gameBoard);
+        this.chronometer = new Chronometer();
         this.bullets.push(newBullet);
     }
+
     start() {
         this.status = 'running';
         this.startScreen.style.display = "none";
@@ -44,8 +49,13 @@ export class Game {
         this.gameInfo.style.display = 'block';
         this.gameLoop()
     }
+
     end() {
         this.status = 'finished';
+
+        let endEnemiesKilledDisplay = document.getElementById("end-enemies-killed") as HTMLElement;
+        endEnemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled}`;
+
         this.player.element.remove();
         this.enemies.forEach((en) => {
             en.element.remove();
@@ -53,26 +63,26 @@ export class Game {
         this.enemies = [];
         this.bullets = [];
         this.gameScreen.style.display = 'none';
-        // this.gameInfo.style.display = 'none';
+        this.gameInfo.style.display = 'none';
         this.endScreen.style.display = 'block';
-
-
     }
+
     gameLoop() {
         if (this.status == 'finished') return;
         this.update()
         window.requestAnimationFrame(() => this.gameLoop())
     }
+
     update() {
         if (this.player.lives <= 0) this.end();
 
         // spawn new enemy
-        
+
         if (this.enemies.length == 0 && Math.random() > 0.5) {
             let newEnemy = new Enemy(this.gameBoard);
             this.enemies.push(newEnemy);
         }
-        
+
         this.enemies.forEach(enemy => {
             enemy.move();
 
@@ -129,14 +139,12 @@ export class Game {
         }
         return false;
     }
-    updateLivesKills() {
-        let livesDisplay = document.getElementById("lives") as HTMLElement;
-        livesDisplay.innerHTML = `${this.player.lives}`;
 
-        let enemiesKilledDisplays = document.querySelectorAll(".enemies-killed") as NodeList;
-        for (let i = 0; i < enemiesKilledDisplays.length; i++) {
-            (enemiesKilledDisplays[i] as HTMLElement).innerHTML = `${this.player.enemiesKilled}`;
-        }
+    updateLivesKills() {
+        let livesDisplay = document.getElementById("info-lives") as HTMLElement;
+        livesDisplay.innerHTML = `${this.player.lives}`;
+        let enemiesKilledDisplay = document.getElementById("info-enemies-killed") as HTMLElement;
+        enemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled}`
     }
     shootBullet() {
         let currentBullet: Bullet;

@@ -1,6 +1,7 @@
 import { Player } from "./Player.js";
 import { Enemy } from "./Enemy.js";
 import { Bullet } from "./Bullet.js";
+import { Chronometer } from "./Chronometer.js";
 export class Game {
     constructor() {
         this.status = 'running' || 'finished';
@@ -21,6 +22,7 @@ export class Game {
         this.gameBoard.style.border = '1px solid brown';
         this.player = new Player(this.gameBoard);
         let newBullet = new Bullet(this.gameBoard);
+        this.chronometer = new Chronometer();
         this.bullets.push(newBullet);
     }
     start() {
@@ -33,6 +35,8 @@ export class Game {
     }
     end() {
         this.status = 'finished';
+        let endEnemiesKilledDisplay = document.getElementById("end-enemies-killed");
+        endEnemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled}`;
         this.player.element.remove();
         this.enemies.forEach((en) => {
             en.element.remove();
@@ -40,7 +44,7 @@ export class Game {
         this.enemies = [];
         this.bullets = [];
         this.gameScreen.style.display = 'none';
-        // this.gameInfo.style.display = 'none';
+        this.gameInfo.style.display = 'none';
         this.endScreen.style.display = 'block';
     }
     gameLoop() {
@@ -108,12 +112,10 @@ export class Game {
         return false;
     }
     updateLivesKills() {
-        let livesDisplay = document.getElementById("lives");
+        let livesDisplay = document.getElementById("info-lives");
         livesDisplay.innerHTML = `${this.player.lives}`;
-        let enemiesKilledDisplays = document.querySelectorAll(".enemies-killed");
-        for (let i = 0; i < enemiesKilledDisplays.length; i++) {
-            enemiesKilledDisplays[i].innerHTML = `${this.player.enemiesKilled}`;
-        }
+        let enemiesKilledDisplay = document.getElementById("info-enemies-killed");
+        enemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled}`;
     }
     shootBullet() {
         let currentBullet;

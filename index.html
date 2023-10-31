@@ -9,6 +9,10 @@
 </head>
 
 <body>
+
+
+
+
     <main>
         <div id="screen-too-small">
             <p>Please use a screen with a resolution of at least 1200*800</p>
@@ -17,6 +21,7 @@
             <h1>Awesome game</h1>
             <div class="game-description">
                 <p>You know and love it: simple endless sidescroller game</p>
+                <p>To Win: Survive 1 minute!</p>
                 <button id="start-game-button" class="btn" type="button">Start game</button>
             </div>
 
@@ -32,7 +37,7 @@
             <h1>End screen</h1>
             <div class="game-stats">
                 <p>Congratulations, you finished the game:)</p>
-                <p>Enemies killed: <span class="enemies-killed"></span></p>
+                <p>Enemies killed: <span id="end-enemies-killed"></span></p>
                 <button id="restart-game-button" class="btn" type="button">Restart game</button>
             </div>
 
@@ -41,8 +46,18 @@
         <aside>
             <div id="game-info">
                 <h2>Info</h2>
-                <p>Lives: <span id="lives"></span></p>
-                <p>Enemies killed: <span class="enemies-killed"></span></p>
+                <section id="clock">
+                    <div id="sphere">
+                        <span id="minDec" class="number">0</span><span id="minUni"
+                            class="number">0</span><span>:</span><span id="secDec" class="number">0</span><span
+                            id="secUni" class="number">0</span>
+                        <span id="centiseconds">
+                            <span id="centisecDec">0</span><span id="centisecUni">0</span>
+                        </span>
+                    </div>
+                </section>
+                <p>Lives: <span id="info-lives"></span></p>
+                <p>Enemies killed: <span id="info-enemies-killed"></span></p>
                 <p>Use "w" to jump</p>
                 <p>Use "space" to shoot</p>
             </div>
