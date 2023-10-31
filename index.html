@@ -15,7 +15,11 @@
         </div>
         <div id="start-screen" class="screen">
             <h1>Awesome game</h1>
-            <button id="start-game-button" class="btn" type="button">Start game</button>
+            <div class="game-description">
+                <p>You know and love it: simple endless sidescroller game</p>
+                <button id="start-game-button" class="btn" type="button">Start game</button>
+            </div>
+
         </div>
 
         <div id="game-screen" class="screen">
@@ -26,14 +30,19 @@
 
         <div id="end-screen" class="screen">
             <h1>End screen</h1>
-            <button id="restart-game-button" class="btn" type="button">Restart game</button>
+            <div class="game-stats">
+                <p>Congratulations, you finished the game:)</p>
+                <p>Enemies killed: <span class="enemies-killed"></span></p>
+                <button id="restart-game-button" class="btn" type="button">Restart game</button>
+            </div>
+
         </div>
 
         <aside>
             <div id="game-info">
                 <h2>Info</h2>
-                <p><span id="lives"></span></p>
-                <p><span id="enemies-killed"></span></p>
+                <p>Lives: <span id="lives"></span></p>
+                <p>Enemies killed: <span class="enemies-killed"></span></p>
                 <p>Use "w" to jump</p>
                 <p>Use "space" to shoot</p>
             </div>

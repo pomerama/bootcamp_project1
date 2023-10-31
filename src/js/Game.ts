@@ -53,8 +53,10 @@ export class Game {
         this.enemies = [];
         this.bullets = [];
         this.gameScreen.style.display = 'none';
-        this.gameInfo.style.display = 'none';
+        // this.gameInfo.style.display = 'none';
         this.endScreen.style.display = 'block';
+
+
     }
     gameLoop() {
         if (this.status == 'finished') return;
@@ -65,16 +67,16 @@ export class Game {
         if (this.player.lives <= 0) this.end();
 
         // spawn new enemy
-
+        
         if (this.enemies.length == 0 && Math.random() > 0.5) {
             let newEnemy = new Enemy(this.gameBoard);
             this.enemies.push(newEnemy);
         }
-
+        
         this.enemies.forEach(enemy => {
             enemy.move();
 
-            if (Math.random() > 0.1) {
+            if (Math.random() > 0.99) {
                 enemy.jump();
             }
 
@@ -110,7 +112,6 @@ export class Game {
             let currentBullet = this.bullets[0];
             let bulletBox = currentBullet.element.getBoundingClientRect();
             if (bulletBox.left >= this.gameBoardWidth) {
-                console.log("bullet left screen")
                 currentBullet.element.remove();
                 this.bullets.splice(this.bullets.indexOf(currentBullet), 1);
             }
@@ -130,10 +131,12 @@ export class Game {
     }
     updateLivesKills() {
         let livesDisplay = document.getElementById("lives") as HTMLElement;
-        let enemiesKilledDisplay = document.getElementById("enemies-killed") as HTMLElement;
+        livesDisplay.innerHTML = `${this.player.lives}`;
 
-        livesDisplay.innerHTML = `Lives: ${this.player.lives}`;
-        enemiesKilledDisplay.innerHTML = `Enemies killed: ${this.player.enemiesKilled}`;
+        let enemiesKilledDisplays = document.querySelectorAll(".enemies-killed") as NodeList;
+        for (let i = 0; i < enemiesKilledDisplays.length; i++) {
+            (enemiesKilledDisplays[i] as HTMLElement).innerHTML = `${this.player.enemiesKilled}`;
+        }
     }
     shootBullet() {
         let currentBullet: Bullet;

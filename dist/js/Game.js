@@ -40,7 +40,7 @@ export class Game {
         this.enemies = [];
         this.bullets = [];
         this.gameScreen.style.display = 'none';
-        this.gameInfo.style.display = 'none';
+        // this.gameInfo.style.display = 'none';
         this.endScreen.style.display = 'block';
     }
     gameLoop() {
@@ -59,7 +59,7 @@ export class Game {
         }
         this.enemies.forEach(enemy => {
             enemy.move();
-            if (Math.random() > 0.1) {
+            if (Math.random() > 0.99) {
                 enemy.jump();
             }
             // check for collission with player
@@ -92,7 +92,6 @@ export class Game {
             let currentBullet = this.bullets[0];
             let bulletBox = currentBullet.element.getBoundingClientRect();
             if (bulletBox.left >= this.gameBoardWidth) {
-                console.log("bullet left screen");
                 currentBullet.element.remove();
                 this.bullets.splice(this.bullets.indexOf(currentBullet), 1);
             }
@@ -110,9 +109,11 @@ export class Game {
     }
     updateLivesKills() {
         let livesDisplay = document.getElementById("lives");
-        let enemiesKilledDisplay = document.getElementById("enemies-killed");
-        livesDisplay.innerHTML = `Lives: ${this.player.lives}`;
-        enemiesKilledDisplay.innerHTML = `Enemies killed: ${this.player.enemiesKilled}`;
+        livesDisplay.innerHTML = `${this.player.lives}`;
+        let enemiesKilledDisplays = document.querySelectorAll(".enemies-killed");
+        for (let i = 0; i < enemiesKilledDisplays.length; i++) {
+            enemiesKilledDisplays[i].innerHTML = `${this.player.enemiesKilled}`;
+        }
     }
     shootBullet() {
         let currentBullet;

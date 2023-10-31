@@ -17,7 +17,6 @@ main {
     margin-left: 20px;
     display: flex;
     flex-wrap: wrap;
-
 }
 
 #game-info {
@@ -28,7 +27,9 @@ main {
 }
 
 #start-screen {
-    display: grid;
+    /* display: grid;
+    place-content: space-around start; */
+    border: 1px solid black;
 }
 
 #game-screen,
@@ -41,14 +42,55 @@ main {
 #start-screen,
 #game-screen,
 #end-screen {
+    width: 1000px;
+    height: 800px;
     justify-content: center;
+}
+
+.game-description,
+.game-stats {
+    height: 800px;
+    display: grid;
+    place-content: center;
+}
+
+.btn {
+    padding: 20px;
 }
 
 #end-game-button {
     width: 100px;
-    height: 50px;
-    margin-top: 50px;
+    justify-self: end;
 }
+
+#game-board {
+    background-color: skyblue;
+    background-image: url("../../assets/mid_ground_cloud_1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* animation: parallaxAnimation 5s linear infinite; */
+    overflow: hidden;
+    position: relative;
+    height: 800px;
+}
+
+/* #game-board::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: url("../../assets/mid_ground_cloud_1.png");
+    background-color: red;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: translateZ(0);
+    animation: parallaxAnimation 10s infinite linear;
+} */
+
+
 
 .in-jump {
     animation: jump-animation 0.5s linear;
@@ -94,6 +136,25 @@ main {
     100% {
         transform: translateX(1000px);
     }
+}
+
+@keyframes parallaxAnimation {
+
+    /* 0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    } */
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+
 }
 
 #screen-too-small {
