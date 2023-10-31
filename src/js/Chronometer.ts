@@ -49,7 +49,7 @@ export class Chronometer {
     }
 
     split() {
-        let result = 'mm:ss.SS';
+        let result = 'mm:ss:SS';
         let formattedMinutes = this.computeTwoDigitNumber(this.getMinutes());
         let formattedSeconds = this.computeTwoDigitNumber(this.getSeconds());
         let formattedCentiseconds = this.computeTwoDigitNumber(this.getCentiseconds());

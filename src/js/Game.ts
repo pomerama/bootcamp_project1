@@ -16,11 +16,13 @@ export class Game {
     gameBoardWidth: number;
     gameBoardHeight: number;
     gameInfo: HTMLDivElement;
+    won: boolean;
 
     constructor() {
         this.enemies = [];
         this.bullets = []
         this.status = 'running';
+        this.won = false;
         this.startScreen = document.getElementById("start-screen") as HTMLDivElement;
         this.gameScreen = document.getElementById("game-screen") as HTMLDivElement;
         this.endScreen = document.getElementById("end-screen") as HTMLDivElement;
@@ -53,8 +55,22 @@ export class Game {
     end() {
         this.status = 'finished';
 
+        if (this.won) {
+            let wonDisplay = document.getElementById("end-won") as HTMLElement;
+            wonDisplay.style.display = 'block'
+            let lostDisplay = document.getElementById("end-lost") as HTMLElement;
+            lostDisplay.style.display = 'none'
+        } else {
+            let wonDisplay = document.getElementById("end-won") as HTMLElement;
+            wonDisplay.style.display = 'none'
+            let lostDisplay = document.getElementById("end-lost") as HTMLElement;
+            lostDisplay.style.display = 'block'
+        }
+
         let endEnemiesKilledDisplay = document.getElementById("end-enemies-killed") as HTMLElement;
         endEnemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled}`;
+        let endTimeDisplay = document.getElementById("end-time") as HTMLElement;
+        endTimeDisplay.innerHTML = `${this.chronometer.split()}`
 
         this.player.element.remove();
         this.enemies.forEach((en) => {
@@ -75,7 +91,8 @@ export class Game {
 
     update() {
         if (this.player.lives <= 0) this.end();
-
+        if (this.chronometer.getMinutes() >= 1) this.won = true; // allow player to play further
+        if (this.player.enemiesKilled >= 10) this.won = true;
         // spawn new enemy
 
         if (this.enemies.length == 0 && Math.random() > 0.5) {
