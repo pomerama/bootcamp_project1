@@ -56,3 +56,14 @@ function printCentiseconds() {
     centisecUni.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getCentiseconds())[1];
     centisecDec.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getCentiseconds())[0];
 }
+// Music
+const music = document.getElementById('music');
+const playPauseButton = document.getElementById('playPauseButton');
+playPauseButton.addEventListener('click', () => {
+    if (!music.paused && music.currentTime > 0) {
+        music.pause();
+    }
+    else {
+        music.play();
+    }
+});

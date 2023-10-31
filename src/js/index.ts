@@ -42,8 +42,6 @@ document.addEventListener("keypress", event => {
 
 
 // Chronometer
-
-
 let minDec = document.getElementById('minDec') as HTMLElement;
 let minUni = document.getElementById('minUni') as HTMLElement;
 let secDec = document.getElementById('secDec') as HTMLElement;
@@ -71,3 +69,16 @@ function printCentiseconds() {
     centisecUni.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getCentiseconds())[1];
     centisecDec.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getCentiseconds())[0];
 }
+
+// Music
+
+const music = document.getElementById('music') as HTMLAudioElement;
+const playPauseButton = document.getElementById('playPauseButton') as HTMLButtonElement;
+
+playPauseButton.addEventListener('click', () => {
+    if (!music.paused && music.currentTime > 0) {
+        music.pause();
+      } else {
+        music.play();
+      }
+});
