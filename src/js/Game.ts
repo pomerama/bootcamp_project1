@@ -7,6 +7,7 @@ export class Game {
     enemies: Array<Enemy>;
     player: Player;
     bullets: Array<Bullet>;
+    gameStats: Array<any>;
     chronometer: Chronometer;
     status = 'running' || 'finished';
     startScreen: HTMLDivElement;
@@ -20,7 +21,8 @@ export class Game {
 
     constructor() {
         this.enemies = [];
-        this.bullets = []
+        this.bullets = [];
+        this.gameStats = [];
         this.status = 'running';
         this.won = false;
         this.startScreen = document.getElementById("start-screen") as HTMLDivElement;
@@ -51,7 +53,25 @@ export class Game {
         this.gameInfo.style.display = 'block';
         this.gameLoop()
     }
-
+    loadGameStats() {
+        const savedGameStats = localStorage.getItem("gameStats")
+        if ((savedGameStats) && (savedGameStats.length > 0)) {
+            const parsedGameStats = JSON.parse(savedGameStats);
+            for (let i = 0; i < parsedGameStats.length; i++) {
+                this.gameStats.push(parsedGameStats[i]);
+            }
+        }
+    }
+    saveGameStats() {
+        this.loadGameStats();
+        const currentGameStats = {
+            name: `${this.player.name}`,
+            enemiesKilled: this.player.enemiesKilled,
+            time: this.chronometer.split(),
+        }
+        this.gameStats.push(currentGameStats);
+        localStorage.setItem("gameStats", JSON.stringify(this.gameStats));
+    }
     end() {
         this.status = 'finished';
 
@@ -76,6 +96,8 @@ export class Game {
         endEnemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled}`;
         let endTimeDisplay = document.getElementById("end-time") as HTMLElement;
         endTimeDisplay.innerHTML = `${this.chronometer.split()}`
+
+        this.saveGameStats();
 
         this.player.element.remove();
         this.enemies.forEach((en) => {
