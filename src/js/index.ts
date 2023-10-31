@@ -8,13 +8,29 @@ let chronometer: any;
 const startGameButton = document.getElementById("start-game-button") as HTMLButtonElement;
 const endGameButton = document.getElementById("end-game-button") as HTMLButtonElement;
 const restartGameButton = document.getElementById("restart-game-button") as HTMLButtonElement;
+const playerNameInput = document.getElementById("player-name-input") as HTMLInputElement;
 
 startGameButton.addEventListener("click", button => {
     game = new Game();
+    let playerName = '';
+    if (playerNameInput.value == '') playerName = 'Awesome Player';
+    else playerName = playerNameInput.value;
+    game.player.name = playerName;
     chronometer = game.chronometer;
     chronometer.reset();
     chronometer.start(printTime);
     game.start();
+
+    document.addEventListener("keypress", event => {
+        if (game.status != 'running') return;
+
+        if (event.code == 'KeyW') {
+            game.player.jump();
+        }
+        if (event.code == 'Space') {
+            game.shootBullet();
+        }
+    })
 });
 
 endGameButton.addEventListener("click", button => {
@@ -23,23 +39,8 @@ endGameButton.addEventListener("click", button => {
 })
 
 restartGameButton.addEventListener("click", button => {
-    game.end()
-    game = new Game();
-    chronometer = game.chronometer;
-    chronometer.reset();
-    chronometer.start(printTime);
-    game.start();
+    window.location.reload();
 })
-
-document.addEventListener("keypress", event => {
-    if (event.code == 'KeyW') {
-        game.player.jump();
-    }
-    if (event.code == 'Space') {
-        game.shootBullet();
-    }
-})
-
 
 // Chronometer
 let minDec = document.getElementById('minDec') as HTMLElement;
@@ -78,7 +79,7 @@ const playPauseButton = document.getElementById('playPauseButton') as HTMLButton
 playPauseButton.addEventListener('click', () => {
     if (!music.paused && music.currentTime > 0) {
         music.pause();
-      } else {
+    } else {
         music.play();
-      }
+    }
 });

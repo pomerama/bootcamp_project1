@@ -48,6 +48,10 @@ export class Game {
             let lostDisplay = document.getElementById("end-lost");
             lostDisplay.style.display = 'block';
         }
+        let nameDisplays = document.querySelectorAll(".player-name");
+        Array.from(nameDisplays).forEach((display) => {
+            display.innerHTML = `${this.player.name}`;
+        });
         let endEnemiesKilledDisplay = document.getElementById("end-enemies-killed");
         endEnemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled}`;
         let endTimeDisplay = document.getElementById("end-time");

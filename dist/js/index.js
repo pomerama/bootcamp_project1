@@ -5,32 +5,36 @@ let chronometer;
 const startGameButton = document.getElementById("start-game-button");
 const endGameButton = document.getElementById("end-game-button");
 const restartGameButton = document.getElementById("restart-game-button");
+const playerNameInput = document.getElementById("player-name-input");
 startGameButton.addEventListener("click", button => {
     game = new Game();
+    let playerName = '';
+    if (playerNameInput.value == '')
+        playerName = 'Awesome Player';
+    else
+        playerName = playerNameInput.value;
+    game.player.name = playerName;
     chronometer = game.chronometer;
     chronometer.reset();
     chronometer.start(printTime);
     game.start();
+    document.addEventListener("keypress", event => {
+        if (game.status != 'running')
+            return;
+        if (event.code == 'KeyW') {
+            game.player.jump();
+        }
+        if (event.code == 'Space') {
+            game.shootBullet();
+        }
+    });
 });
 endGameButton.addEventListener("click", button => {
     chronometer.stop();
     game.end();
 });
 restartGameButton.addEventListener("click", button => {
-    game.end();
-    game = new Game();
-    chronometer = game.chronometer;
-    chronometer.reset();
-    chronometer.start(printTime);
-    game.start();
-});
-document.addEventListener("keypress", event => {
-    if (event.code == 'KeyW') {
-        game.player.jump();
-    }
-    if (event.code == 'Space') {
-        game.shootBullet();
-    }
+    window.location.reload();
 });
 // Chronometer
 let minDec = document.getElementById('minDec');

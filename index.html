@@ -19,6 +19,11 @@
             <div class="game-description">
                 <p>You know and love it: simple endless sidescroller game</p>
                 <p>To Win: Survive 1 minute and/or kill 10 enemies !</p>
+                <div>
+                    <label for="player-name-input">If you like change your nick name:</label>
+                    <input type="text" id="player-name-input" name="name" placeholder="Awesome player"
+                        autocomplete="off" maxlength="20">
+                </div>
                 <button id="start-game-button" class="btn" type="button">Start game</button>
             </div>
         </div>
@@ -32,8 +37,9 @@
         <div id="end-screen" class="screen">
             <h1>End screen</h1>
             <div class="game-stats">
-                <p><span id="end-won">Congratulations, you won!</span></p>
-                <p><span id="end-lost">Better luck next time, you can do it!</span></p>
+                <p><span id="end-won">Congratulations <span class="player-name"></span>, you won!</span></p>
+                <p><span id="end-lost">Better luck next time <span class="player-name"></span>, you can do it!</span>
+                </p>
                 <p>Time survived: <span id="end-time"></span></p>
                 <p>Enemies killed: <span id="end-enemies-killed"></span></p>
                 <button id="restart-game-button" class="btn" type="button">Restart game</button>

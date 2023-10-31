@@ -67,6 +67,11 @@ export class Game {
             lostDisplay.style.display = 'block'
         }
 
+        let nameDisplays = document.querySelectorAll(".player-name") as NodeListOf<HTMLElement>
+        Array.from(nameDisplays).forEach((display: HTMLElement) => {
+            display.innerHTML = `${this.player.name}`;
+        })
+
         let endEnemiesKilledDisplay = document.getElementById("end-enemies-killed") as HTMLElement;
         endEnemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled}`;
         let endTimeDisplay = document.getElementById("end-time") as HTMLElement;

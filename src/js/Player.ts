@@ -4,9 +4,10 @@ export class Player {
     isJumping: boolean;
     lives: number;
     enemiesKilled: number;
-
+    name: String;
     constructor(gameBoard: HTMLDivElement) {
         this.gameBoard = gameBoard;
+        this.name = "Awesome player";
         this.lives = 3;
         this.enemiesKilled = 0;
         this.isJumping = false;
