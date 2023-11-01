@@ -33,7 +33,7 @@ export class Game {
         gameScreen.style.display = 'none';
         endScreen.style.display = 'none';
         gameBoard.style.display = 'none';
-        gameInfo.style.display = 'none';
+        // gameInfo.style.display = 'none';
     }
     start() {
         this.status = 'running';

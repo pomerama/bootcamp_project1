@@ -59,20 +59,48 @@ svg {
 /* ---------------------------------------------------- */
 
 body {
-    background-color: var(--background-color);
+    /* background-color: var(--background-color); */
+    background-color: grey;
     font-family: var(--font-family);
     font-size: var(--font-size);
     color: white;
 }
 
+.header {
+    top: 0;
+    width: 1200px;
+    height: 100px;
+    border: 2px solid green;
+}
+
+.main {
+    display: flex;
+    height: 800px;
+}
+
+.screen {
+    border: 2px solid black;
+    width: 1000px;
+}
+
+.aside {
+    border: 2px solid pink;
+    width: 200px;
+}
+
+.footer {
+    border: 2px solid yellow;
+    width: 1200px;
+}
+
 #game-board {
+
     background-color: skyblue;
     background-image: url("../../assets/mid_ground_cloud_1.png");
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
     position: relative;
-    height: 800px;
 }
 
 @keyframes moveSpritesheet {
@@ -123,7 +151,8 @@ body {
 }
 
 @media (max-width: 1200px) or (max-height: 800px) {
-    main,
+
+    .main,
     .credits {
         display: none;
     }

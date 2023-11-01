@@ -15,15 +15,21 @@
 </head>
 
 <body>
-    <header>
+    <header class="header">
         <h1>Awesome game</h1>
+
+        <div class="background-music-container">
+            <audio loop id="music" src="./assets/background_music.mp3"></audio>
+            <button id="playPauseButton" type="button">Play/Pause</button>
+        </div>
+
     </header>
 
     <div id="screen-too-small">
         <p>Please use a screen with a resolution of at least 1200*800</p>
     </div>
-    
-    <main>
+
+    <main class="main">
         <div class="start screen" class="screen">
             <div class="game-description">
                 <p>You know and love it: simple endless sidescroller game</p>
@@ -59,12 +65,9 @@
             </div>
         </div>
 
-        <div class="background-music-container">
-            <audio loop id="music" src="./assets/background_music.mp3"></audio>
-            <button id="playPauseButton" type="button">Play/Pause</button>
-        </div>
 
-        <aside>
+
+        <aside class="aside">
             <div class="game-info">
                 <h2>Info</h2>
                 <section id="clock">
@@ -85,32 +88,30 @@
         </aside>
     </main>
 
-    <div class="credits">
-        <h2>Credits</h2>
-        <p>Thank you very much for providing free to use stuff! :)</p>
-        <p>Assets used</p>
-        <ul>
-            <li><a href="https://www.gamedeveloperstudio.com/graphics/viewgraphic.php?item=1m4m317c019l0x114y">"Mean
-                    monster 2" by Robert Brooks</a></li>
-            <li><a
-                    href="https://www.gamedeveloperstudio.com/graphics/viewgraphic.php?page-name=Animated-stickman-and-stick-girl&item=1l4q737v077s1f8l3t">"Animated
-                    stickman and stick girl" by Robert Brooks</a></li>
-            <li><a
-                    href="https://www.gamedeveloperstudio.com/graphics/viewgraphic.php?page-name=Parallaxing-2d-game-sky-background&item=1e504e4l435h3q798r">"Parallaxing
-                    2d game sky background" by Robert Brooks</a></li>
-
-            <li><a href="https://wenrexa.itch.io/laser2020">"Assets Free Laser Bullets Pack 2020" by Wenrexa</a>
-            </li>
-            <li><a href="https://soundimage.org/looping-music/">"Arcade-Fantasy" by Eric Matyas</a></li>
-            <li><a
-                    href="https://pixabay.com/users/shidenbeatsmusic-25676252/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=115095">"Twinkle/Sparkle"by
-                    Shiden Beats Music from Pixabay</a></li>
-            <li><a href="https://favicon.io/">Favicon.io generator</a></li>
-        </ul>
-    </div>
-
-    <footer>
-
+    <footer class="footer">
+        <div class="credits">
+            <h2>Credits</h2>
+            <p>Thank you very much for providing free to use stuff! :)</p>
+            <p>Assets used</p>
+            <ul>
+                <li><a href="https://www.gamedeveloperstudio.com/graphics/viewgraphic.php?item=1m4m317c019l0x114y">"Mean
+                        monster 2" by Robert Brooks</a></li>
+                <li><a
+                        href="https://www.gamedeveloperstudio.com/graphics/viewgraphic.php?page-name=Animated-stickman-and-stick-girl&item=1l4q737v077s1f8l3t">"Animated
+                        stickman and stick girl" by Robert Brooks</a></li>
+                <li><a
+                        href="https://www.gamedeveloperstudio.com/graphics/viewgraphic.php?page-name=Parallaxing-2d-game-sky-background&item=1e504e4l435h3q798r">"Parallaxing
+                        2d game sky background" by Robert Brooks</a></li>
+    
+                <li><a href="https://wenrexa.itch.io/laser2020">"Assets Free Laser Bullets Pack 2020" by Wenrexa</a>
+                </li>
+                <li><a href="https://soundimage.org/looping-music/">"Arcade-Fantasy" by Eric Matyas</a></li>
+                <li><a
+                        href="https://pixabay.com/users/shidenbeatsmusic-25676252/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=115095">"Twinkle/Sparkle"by
+                        Shiden Beats Music from Pixabay</a></li>
+                <li><a href="https://favicon.io/">Favicon.io generator</a></li>
+            </ul>
+        </div>
     </footer>
 
     <script type="module" src="./dist/js/index.js"></script>
