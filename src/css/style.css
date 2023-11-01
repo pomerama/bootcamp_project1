@@ -95,12 +95,23 @@ body {
 .screen {
     border: 2px solid black;
     width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.game-description,
+.player-name-container,
+.start-game-btn-container {
+    /* border: 2px solid blue; */
+    width: 100%;
+    height: 20%;
     display: grid;
     place-content: center;
 }
 
-.game-description {
-    border: 2px solid blue;
+.game-description p {
+    font-size: larger;
+    padding-top: 20px;
 }
 
 .aside {
@@ -109,7 +120,6 @@ body {
 }
 
 #game-board {
-
     background-color: skyblue;
     background-image: url("../../assets/mid_ground_cloud_1.png");
     background-size: cover;
