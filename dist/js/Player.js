@@ -7,7 +7,6 @@ export class Player {
         this.isJumping = false;
         this.element = document.createElement("div");
         this.element.classList.add("player");
-        // this.element.style.width = `calc(25px * var(--pixel-size))`;
         this.element.style.height = `130px`;
         this.element.style.width = '85px';
         this.element.style.overflow = 'hidden';
@@ -16,7 +15,7 @@ export class Player {
         let imgElement = document.createElement("img");
         imgElement.classList.add("player-spritesheet");
         imgElement.src = "./assets/stick_man_spritesheet.png";
-        imgElement.style.width = `calc(100px * var(--pixel-size))`;
+        imgElement.style.width = `600px`;
         imgElement.style.animation = `moveSpritesheet 0.5s steps(4) infinite`;
         imgElement.style.marginLeft = '-60px';
         imgElement.style.marginTop = '-10px';
@@ -30,8 +29,10 @@ export class Player {
             return;
         this.isJumping = true;
         this.element.classList.add('in-jump');
+        this.element.style.animation = 'jump-animation 0.5s linear';
         setTimeout(() => {
             this.element.classList.remove('in-jump');
+            this.element.style.animation = '';
         }, 500);
         this.isJumping = false;
     }

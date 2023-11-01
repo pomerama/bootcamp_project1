@@ -1,17 +1,3 @@
-:root {
-    /* used to scale spritesheet */
-    --pixel-size: 6;
-}
-
-body {
-    background-color: grey;
-}
-
-h1 {
-    color: pink;
-    text-align: center;
-}
-
 main {
     margin-top: 10px;
     margin-left: 20px;
@@ -19,25 +5,11 @@ main {
     flex-wrap: wrap;
 }
 
-#game-info {
-    margin-top: 80px;
-    margin-left: 30px;
-    padding: 20px;
-    display: none;
-    border: 1px solid pink;
-}
-
-#start-screen {
-    /* display: grid;
-    place-content: space-around start; */
-    border: 1px solid black;
-}
-
 #game-screen,
-#end-screen {
+#end-screen,
+#end-won,
+#end-lost {
     display: none;
-
-    border: 1px solid black;
 }
 
 #start-screen,
@@ -46,30 +18,7 @@ main {
     width: 1000px;
     height: 800px;
     justify-content: center;
-}
-
-.game-description,
-.game-stats {
-    height: 800px;
-    display: grid;
-    place-content: center;
-}
-
-.btn {
-    padding: 20px;
-}
-
-#end-game-button {
-    width: 100px;
-    justify-self: end;
-}
-
-#end-won {
-    display: none;
-}
-
-#end-lost {
-    display: none;
+    border: 1px solid black;
 }
 
 #game-board {
@@ -77,32 +26,24 @@ main {
     background-image: url("../../assets/mid_ground_cloud_1.png");
     background-size: cover;
     background-repeat: no-repeat;
-    /* animation: parallaxAnimation 5s linear infinite; */
     overflow: hidden;
     position: relative;
     height: 800px;
 }
 
-/* #game-board::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    background: url("../../assets/mid_ground_cloud_1.png");
-    background-color: red;
-    background-size: cover;
-    background-repeat: no-repeat;
-    transform: translateZ(0);
-    animation: parallaxAnimation 10s infinite linear;
-} */
+#game-info {
+    margin-top: 80px;
+    margin-left: 30px;
+    padding: 20px;
+    display: none;
+    border: 1px solid green;
+}
 
-
-
-.in-jump {
-    animation: jump-animation 0.5s linear;
+.game-description,
+.game-stats {
+    height: 800px;
+    display: grid;
+    place-content: center;
 }
 
 @keyframes moveSpritesheet {
@@ -147,25 +88,7 @@ main {
     }
 }
 
-@keyframes parallaxAnimation {
-
-    /* 0% {
-        background-position: 0% 0%;
-    }
-
-    100% {
-        background-position: 100% 100%;
-    } */
-    0% {
-        transform: translateX(0%);
-    }
-
-    100% {
-        transform: translateX(100%);
-    }
-
-}
-
+/* Display message for screens that are too small */
 #screen-too-small {
     display: none;
 }
@@ -178,57 +101,8 @@ main {
     #start-screen,
     #game-screen,
     #end-screen,
+    #game-board,
     aside {
         display: none;
     }
 }
-
-
-
-/*
-TODO
-
-.additional-info {
-    flex-basis: 100%;
-    margin-top: 50px;
-}
-
-.additional-info .tag-list {
-    margin: 0;
-    padding-inline: 0;
-    list-style: none;
-}
-
-.additional-info .tag-list li {
-    padding: 1rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 0.5rem 1rem -0.25rem;
-}
-
-.additional-info .scroller {
-    max-width: 100px;
-    overflow: hidden;
-    -webkit-mask: linear-gradient(90deg,
-            transparent,
-            white 20%,
-            white 80%,
-            transparent);
-    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
-}
-
-.additional-info .scroller_inner {
-    padding-block: 1rem;
-    display: flex;
-    gap: 1rem;
-    width: max-content;
-    flex-wrap: nowrap;
-    animation: scroll 10s forwards linear infinite;
-}
-
-@keyframes scroll {
-    to {
-        transform: translate(calc(-50% - 0.5rem));
-    }
-}
-
-*/
