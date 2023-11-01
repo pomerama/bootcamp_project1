@@ -123,15 +123,17 @@ body {
 }
 
 @media (max-width: 1200px) or (max-height: 800px) {
-    #screen-too-small {
-        display: block;
+    main,
+    .credits {
+        display: none;
     }
 
-    #start-screen,
-    #game-screen,
-    #end-screen,
-    #game-board,
-    aside {
-        display: none;
+    #screen-too-small {
+        display: block;
+
+    }
+
+    #screen-too-small p {
+        font-size: 20px;
     }
 }
