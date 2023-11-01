@@ -197,8 +197,9 @@ export class Game {
             this.bullets.push(currentBullet);
         }
         currentBullet.element.style.display = 'block';
-        currentBullet.element.style.left = `${this.player.element.getBoundingClientRect().right} px`;
-        currentBullet.element.style.top = `${this.player.element.getBoundingClientRect().top + 50} px`;
+        // place the bullet near player, at a height where it can collide with enemy
+        let currentBulletTop = this.player.element.getBoundingClientRect().top + 30;
+        currentBullet.element.style.top = `${currentBulletTop}px`;
         currentBullet.element.style.animation = 'bullet-animation 0.7s linear';
     }
 }
