@@ -71,6 +71,16 @@ body {
     width: 1200px;
     height: 100px;
     border: 2px solid green;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .background-music-container {
+    position: absolute;
+    right: 0;
+    margin-right: 30px;
 }
 
 .main {
