@@ -64,13 +64,15 @@ body {
     font-family: var(--font-family);
     font-size: var(--font-size);
     color: white;
+    margin-left: 50px;
+    margin-top: 10px;
 }
 
 .header {
     top: 0;
     width: 1200px;
     height: 100px;
-    border: 2px solid green;
+    /* border: 2px solid green; */
     display: flex;
     position: relative;
     justify-content: center;
@@ -84,23 +86,26 @@ body {
 }
 
 .main {
+    /* border: 3px solid white; */
     display: flex;
     height: 800px;
+    width: 1200px;
 }
 
 .screen {
     border: 2px solid black;
     width: 1000px;
+    display: grid;
+    place-content: center;
+}
+
+.game-description {
+    border: 2px solid blue;
 }
 
 .aside {
-    border: 2px solid pink;
+    /* border: 2px solid pink; */
     width: 200px;
-}
-
-.footer {
-    border: 2px solid yellow;
-    width: 1200px;
 }
 
 #game-board {
@@ -113,6 +118,18 @@ body {
     position: relative;
 }
 
+.footer {
+    /* border: 2px solid yellow; */
+    width: 1200px;
+}
+
+
+/* Helper */
+.hidden {
+    display: none;
+}
+
+/* Animations */
 @keyframes moveSpritesheet {
     from {
         transform: translate(0, 0);
@@ -160,7 +177,7 @@ body {
     display: none;
 }
 
-@media (max-width: 1200px) or (max-height: 800px) {
+@media (max-width: 1250px) or (max-height: 810px) {
 
     .main,
     .credits {

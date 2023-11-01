@@ -16,7 +16,6 @@ export class Game {
     gameBoard: HTMLDivElement;
     gameBoardWidth: number;
     gameBoardHeight: number;
-    gameInfo: HTMLDivElement;
     won: boolean;
 
     constructor() {
@@ -32,8 +31,7 @@ export class Game {
         this.gameScreen = document.querySelector(".game.screen") as HTMLDivElement;
         this.endScreen = document.querySelector(".end.screen") as HTMLDivElement;
         this.gameBoard = document.getElementById("game-board") as HTMLDivElement;
-        this.gameInfo = document.querySelector(".game-info") as HTMLDivElement;
-        this.initialScreensVisibility(this.startScreen, this.gameScreen, this.endScreen, this.gameBoard, this.gameInfo);
+        this.initialScreensVisibility(this.startScreen, this.gameScreen, this.endScreen, this.gameBoard);
 
         this.gameBoardWidth = 1000;
         this.gameBoardHeight = 600;
@@ -52,21 +50,18 @@ export class Game {
     initialScreensVisibility(startScreen: HTMLDivElement,
         gameScreen: HTMLDivElement,
         endScreen: HTMLDivElement,
-        gameBoard: HTMLDivElement,
-        gameInfo: HTMLDivElement) {
-        startScreen.style.display = 'block';
-        gameScreen.style.display = 'none';
-        endScreen.style.display = 'none';
-        gameBoard.style.display = 'none';
-        // gameInfo.style.display = 'none';
-
+        gameBoard: HTMLDivElement) {
+        startScreen.classList.remove('hidden');
+        gameScreen.classList.add('hidden');
+        gameBoard.classList.add('hidden');
+        endScreen.classList.add('hidden');
     }
     start() {
         this.status = 'running';
-        this.startScreen.style.display = "none";
-        this.gameScreen.style.display = "grid";
-        this.endScreen.style.display = "none";
-        this.gameInfo.style.display = 'block';
+        this.startScreen.classList.add('hidden');
+        this.gameScreen.classList.remove('hidden');
+        this.gameBoard.classList.remove('hidden');
+        this.endScreen.classList.add('hidden');
         this.gameLoop()
     }
 
@@ -148,9 +143,8 @@ export class Game {
         })
         this.enemies = [];
         this.bullets = [];
-        this.gameScreen.style.display = 'none';
-        this.gameInfo.style.display = 'none';
-        this.endScreen.style.display = 'block';
+        this.gameScreen.classList.add('hidden')
+        this.endScreen.classList.remove('hidden');
     }
 
     gameLoop() {

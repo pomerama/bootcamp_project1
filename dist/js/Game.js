@@ -15,8 +15,7 @@ export class Game {
         this.gameScreen = document.querySelector(".game.screen");
         this.endScreen = document.querySelector(".end.screen");
         this.gameBoard = document.getElementById("game-board");
-        this.gameInfo = document.querySelector(".game-info");
-        this.initialScreensVisibility(this.startScreen, this.gameScreen, this.endScreen, this.gameBoard, this.gameInfo);
+        this.initialScreensVisibility(this.startScreen, this.gameScreen, this.endScreen, this.gameBoard);
         this.gameBoardWidth = 1000;
         this.gameBoardHeight = 600;
         this.gameBoard.style.width = `${this.gameBoardWidth}px`;
@@ -28,19 +27,18 @@ export class Game {
         let newBullet = new Bullet(this.gameBoard);
         this.bullets.push(newBullet);
     }
-    initialScreensVisibility(startScreen, gameScreen, endScreen, gameBoard, gameInfo) {
-        startScreen.style.display = 'block';
-        gameScreen.style.display = 'none';
-        endScreen.style.display = 'none';
-        gameBoard.style.display = 'none';
-        // gameInfo.style.display = 'none';
+    initialScreensVisibility(startScreen, gameScreen, endScreen, gameBoard) {
+        startScreen.classList.remove('hidden');
+        gameScreen.classList.add('hidden');
+        gameBoard.classList.add('hidden');
+        endScreen.classList.add('hidden');
     }
     start() {
         this.status = 'running';
-        this.startScreen.style.display = "none";
-        this.gameScreen.style.display = "grid";
-        this.endScreen.style.display = "none";
-        this.gameInfo.style.display = 'block';
+        this.startScreen.classList.add('hidden');
+        this.gameScreen.classList.remove('hidden');
+        this.gameBoard.classList.remove('hidden');
+        this.endScreen.classList.add('hidden');
         this.gameLoop();
     }
     loadGameStats() {
@@ -110,9 +108,8 @@ export class Game {
         });
         this.enemies = [];
         this.bullets = [];
-        this.gameScreen.style.display = 'none';
-        this.gameInfo.style.display = 'none';
-        this.endScreen.style.display = 'block';
+        this.gameScreen.classList.add('hidden');
+        this.endScreen.classList.remove('hidden');
     }
     gameLoop() {
         if (this.status == 'finished')
