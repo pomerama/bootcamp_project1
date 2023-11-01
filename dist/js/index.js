@@ -1,13 +1,12 @@
 import { Game } from "./Game.js";
 // Game
-let game;
+let game = new Game();
 let chronometer;
 const startGameButton = document.getElementById("start-game-button");
 const endGameButton = document.getElementById("end-game-button");
 const restartGameButton = document.getElementById("restart-game-button");
 const playerNameInput = document.getElementById("player-name-input");
 startGameButton.addEventListener("click", button => {
-    game = new Game();
     let playerName = '';
     if (playerNameInput.value == '')
         playerName = 'Awesome Player';

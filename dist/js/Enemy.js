@@ -27,8 +27,10 @@ export class Enemy {
             return;
         this.isJumping = true;
         this.element.classList.add('in-jump');
+        this.element.style.animation = 'jump-animation 0.5s linear';
         setTimeout(() => {
             this.element.classList.remove('in-jump');
+            this.element.style.animation = '';
         }, 600);
         this.isJumping = false;
     }

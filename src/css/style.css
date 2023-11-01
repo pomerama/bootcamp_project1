@@ -1,3 +1,10 @@
+:root {
+    --background-color: #485f77;
+    --font-family: system-ui;
+    --font-size: 1.125rem;
+}
+
+
 /* ---------------------------------------------------- */
 /* CSS Reset https://andy-bell.co.uk/a-modern-css-reset/*/
 /* Box sizing rules */
@@ -51,27 +58,11 @@ svg {
 
 /* ---------------------------------------------------- */
 
-main {
-    margin-top: 10px;
-    margin-left: 20px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#game-screen,
-#end-screen,
-#end-won,
-#end-lost {
-    display: none;
-}
-
-#start-screen,
-#game-screen,
-#end-screen {
-    width: 1000px;
-    height: 800px;
-    justify-content: center;
-    border: 1px solid black;
+body {
+    background-color: var(--background-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    color: white;
 }
 
 #game-board {
@@ -82,21 +73,6 @@ main {
     overflow: hidden;
     position: relative;
     height: 800px;
-}
-
-#game-info {
-    margin-top: 80px;
-    margin-left: 30px;
-    padding: 20px;
-    display: none;
-    border: 1px solid green;
-}
-
-.game-description,
-.game-stats {
-    height: 800px;
-    display: grid;
-    place-content: center;
 }
 
 @keyframes moveSpritesheet {

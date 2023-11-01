@@ -25,11 +25,16 @@ export class Game {
         this.gameStats = [];
         this.status = 'running';
         this.won = false;
-        this.startScreen = document.getElementById("start-screen") as HTMLDivElement;
-        this.gameScreen = document.getElementById("game-screen") as HTMLDivElement;
-        this.endScreen = document.getElementById("end-screen") as HTMLDivElement;
+
+        this.chronometer = new Chronometer();
+
+        this.startScreen = document.querySelector(".start.screen") as HTMLDivElement;
+        this.gameScreen = document.querySelector(".game.screen") as HTMLDivElement;
+        this.endScreen = document.querySelector(".end.screen") as HTMLDivElement;
         this.gameBoard = document.getElementById("game-board") as HTMLDivElement;
-        this.gameInfo = document.getElementById("game-info") as HTMLDivElement;
+        this.gameInfo = document.querySelector(".game-info") as HTMLDivElement;
+        this.initialScreensVisibility(this.startScreen, this.gameScreen, this.endScreen, this.gameBoard, this.gameInfo);
+
         this.gameBoardWidth = 1000;
         this.gameBoardHeight = 600;
 
@@ -41,10 +46,21 @@ export class Game {
 
         this.player = new Player(this.gameBoard);
         let newBullet = new Bullet(this.gameBoard);
-        this.chronometer = new Chronometer();
         this.bullets.push(newBullet);
     }
 
+    initialScreensVisibility(startScreen: HTMLDivElement,
+        gameScreen: HTMLDivElement,
+        endScreen: HTMLDivElement,
+        gameBoard: HTMLDivElement,
+        gameInfo: HTMLDivElement) {
+        startScreen.style.display = 'block';
+        gameScreen.style.display = 'none';
+        endScreen.style.display = 'none';
+        gameBoard.style.display = 'none';
+        gameInfo.style.display = 'none';
+
+    }
     start() {
         this.status = 'running';
         this.startScreen.style.display = "none";
@@ -147,8 +163,8 @@ export class Game {
         if (this.player.lives <= 0) this.end();
         if (this.chronometer.getMinutes() >= 1) this.won = true; // allow player to play further
         if (this.player.enemiesKilled >= 10) this.won = true;
-        // spawn new enemy
 
+        // spawn new enemy
         if (this.enemies.length == 0 && Math.random() > 0.5) {
             let newEnemy = new Enemy(this.gameBoard);
             this.enemies.push(newEnemy);
@@ -177,7 +193,6 @@ export class Game {
                 this.enemies.splice(this.enemies.indexOf(enemy), 1);
             }
             // check for collission with bullet
-
             if (this.bullets.length > 0) {
                 let currentBullet = this.bullets[0];
                 let bulletBox = currentBullet.element.getBoundingClientRect();
@@ -219,6 +234,7 @@ export class Game {
         let enemiesKilledDisplay = document.getElementById("info-enemies-killed") as HTMLElement;
         enemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled} `
     }
+
     shootBullet() {
         let currentBullet: Bullet;
         if (this.bullets.length > 0) {

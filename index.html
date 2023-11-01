@@ -23,7 +23,7 @@
             <p>Please use a screen with a resolution of at least 1200*800</p>
         </div>
 
-        <div id="start-screen" class="screen">
+        <div class="start screen" class="screen">
             <h1>Awesome game</h1>
             <div class="game-description">
                 <p>You know and love it: simple endless sidescroller game</p>
@@ -37,14 +37,14 @@
             </div>
         </div>
 
-        <div id="game-screen" class="screen">
+        <div class="game screen" class="screen">
             <h1>Game screen</h1>
             <div id="game-board"></div>
             <button id="end-game-button" class="btn" type="button">End game</button>
             <audio id="sfx-enemy-collision" src="./assets/sound_effect_twinklesparkle.m4a" type="audio/x-m4a"></audio>
         </div>
 
-        <div id="end-screen" class="screen">
+        <div class="end screen" class="screen">
             <h1>End screen</h1>
             <div class="game-stats">
                 <p><span id="end-won">Congratulations <span class="player-name"></span>, you won!</span></p>
@@ -58,12 +58,14 @@
                 <button id="restart-game-button" class="btn" type="button">Restart game</button>
             </div>
         </div>
-        <div>
+
+        <div class="background-music-container">
             <audio loop id="music" src="./assets/background_music.mp3"></audio>
-            <button id="playPauseButton">Play/Pause</button>
+            <button id="playPauseButton" type="button">Play/Pause</button>
         </div>
+
         <aside>
-            <div id="game-info">
+            <div class="game-info">
                 <h2>Info</h2>
                 <section id="clock">
                     <div id="sphere">
@@ -83,7 +85,7 @@
         </aside>
     </main>
 
-    <div id="credits">
+    <div credits="credits">
         <h2>Credits</h2>
         <p>Thank you very much for providing free to use stuff! :)</p>
         <p>Assets used</p>

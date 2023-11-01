@@ -10,11 +10,13 @@ export class Game {
         this.gameStats = [];
         this.status = 'running';
         this.won = false;
-        this.startScreen = document.getElementById("start-screen");
-        this.gameScreen = document.getElementById("game-screen");
-        this.endScreen = document.getElementById("end-screen");
+        this.chronometer = new Chronometer();
+        this.startScreen = document.querySelector(".start.screen");
+        this.gameScreen = document.querySelector(".game.screen");
+        this.endScreen = document.querySelector(".end.screen");
         this.gameBoard = document.getElementById("game-board");
-        this.gameInfo = document.getElementById("game-info");
+        this.gameInfo = document.querySelector(".game-info");
+        this.initialScreensVisibility(this.startScreen, this.gameScreen, this.endScreen, this.gameBoard, this.gameInfo);
         this.gameBoardWidth = 1000;
         this.gameBoardHeight = 600;
         this.gameBoard.style.width = `${this.gameBoardWidth}px`;
@@ -24,8 +26,14 @@ export class Game {
         this.gameBoard.style.border = '1px solid brown';
         this.player = new Player(this.gameBoard);
         let newBullet = new Bullet(this.gameBoard);
-        this.chronometer = new Chronometer();
         this.bullets.push(newBullet);
+    }
+    initialScreensVisibility(startScreen, gameScreen, endScreen, gameBoard, gameInfo) {
+        startScreen.style.display = 'block';
+        gameScreen.style.display = 'none';
+        endScreen.style.display = 'none';
+        gameBoard.style.display = 'none';
+        gameInfo.style.display = 'none';
     }
     start() {
         this.status = 'running';
