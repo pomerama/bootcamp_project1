@@ -48,7 +48,22 @@
 
         <div class="game screen" class="screen">
             <h1>Game screen</h1>
-            <div id="game-board"></div>
+            <div id="game-board">
+                <div id="onscreen-stats">
+                    <p>Lives: <span id="info-lives"></span></p>
+                    <p>Kills: <span id="info-enemies-killed"></span></p>
+                    <section id="clock">
+                        <div id="sphere">
+                            Time: <span id="minDec" class="number">0</span><span id="minUni"
+                                class="number">0</span><span>:</span><span id="secDec" class="number">0</span><span
+                                id="secUni" class="number">0</span>
+                            <span id="centiseconds">
+                                :<span id="centisecDec">0</span><span id="centisecUni">0</span>
+                            </span>
+                        </div>
+                    </section>
+                </div>
+            </div>
             <button id="end-game-button" class="btn" type="button">End game</button>
             <audio id="sfx-enemy-collision" src="./assets/sound_effect_twinklesparkle.m4a" type="audio/x-m4a"></audio>
         </div>
@@ -73,18 +88,8 @@
         <aside class="aside">
             <div class="game-info">
                 <h2>Info</h2>
-                <section id="clock">
-                    <div id="sphere">
-                        <span id="minDec" class="number">0</span><span id="minUni"
-                            class="number">0</span><span>:</span><span id="secDec" class="number">0</span><span
-                            id="secUni" class="number">0</span>
-                        <span id="centiseconds">
-                            :<span id="centisecDec">0</span><span id="centisecUni">0</span>
-                        </span>
-                    </div>
-                </section>
-                <p>Lives: <span id="info-lives"></span></p>
-                <p>Enemies killed: <span id="info-enemies-killed"></span></p>
+
+
                 <p>Use "w" to jump</p>
                 <p>Use "j" to shoot</p>
             </div>

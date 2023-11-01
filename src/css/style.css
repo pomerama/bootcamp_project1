@@ -115,8 +115,10 @@ body {
 }
 
 .aside {
-    /* border: 2px solid pink; */
+    border: 2px solid pink;
     width: 200px;
+    padding-top: 50px;
+    text-align: center;
 }
 
 #game-board {
@@ -126,6 +128,12 @@ body {
     background-repeat: no-repeat;
     overflow: hidden;
     position: relative;
+}
+
+#onscreen-stats {
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .footer {
