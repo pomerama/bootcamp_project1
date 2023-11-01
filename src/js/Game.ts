@@ -168,6 +168,8 @@ export class Game {
                 this.player.lives--;
                 enemy.element.remove();
                 this.enemies.splice(this.enemies.indexOf(enemy), 1);
+                let enemeyCollisionSFX = document.getElementById("sfx-enemy-collision") as HTMLAudioElement;
+                enemeyCollisionSFX.play();
             }
             // enemy moved out of screen
             if (enemy.left <= -this.gameBoardWidth) {
