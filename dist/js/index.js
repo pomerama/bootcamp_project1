@@ -24,7 +24,7 @@ startGameButton.addEventListener("click", button => {
         if (event.code == 'KeyW') {
             game.player.jump();
         }
-        if (event.code == 'Space') {
+        if (event.code == 'KeyJ') {
             game.shootBullet();
         }
     });
