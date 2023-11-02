@@ -1,14 +1,9 @@
-export {};
-// describe('SomeOthPlaer', () => {
-//     let myObject = {} as SomeOther;
-//     beforeEach(() => {
-//         myObject = new SomeOther();
-//     });
-//     it('is created empty', () => {
-//         expect(myObject.top).toBe(-1);
-//         expect(myObject.items).toEqual({});
-//     });
-//     it('cluck should return OK', () => {
-//         expect(myObject.cluck()).toBe("OK");
+"use strict";
+// import { Chronometer } from "../js/Chronometer";
+// import { Chronometer } from "../../dist/js/Chronometer.js";
+// describe('Chronometer', () => {
+//     it('Chronometers initial time should be 0', () => {
+//         const chronometer = new Chronometer();
+//         expect(chronometer.currentTime).toBe(0);
 //     })
 // });
