@@ -11,7 +11,6 @@ export class Player {
         this.element.style.width = '85px';
         this.element.style.overflow = 'hidden';
         this.element.style.gridRow = '2';
-        this.element.style.border = `1px solid green`;
         let imgElement = document.createElement("img");
         imgElement.classList.add("player-spritesheet");
         imgElement.src = "./assets/stick_man_spritesheet.png";

@@ -21,7 +21,6 @@ export class Enemy {
         this.element.style.height = `${this.height}px`;
         this.element.style.left = `${this.left}px`;
         this.element.style.bottom = `${this.bottom}px`;
-        this.element.style.border = `1px solid red`;
 
         this.gameBoard.appendChild(this.element);
     }
