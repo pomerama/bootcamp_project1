@@ -15,22 +15,22 @@ export class Chronometer {
         }, 10);
     }
 
-    getMinutes() {
+    getMinutes(): number {
         let minutesPassed = Math.floor(this.currentTime / 100 / 60);
         return minutesPassed;
     }
 
-    getSeconds() {
+    getSeconds(): number {
         let secondsPassed = Math.floor(this.currentTime / 100 % 60);
         return secondsPassed;
     }
 
-    getCentiseconds() {
+    getCentiseconds(): number {
         let centisecondsPassed = this.currentTime % 100;
         return centisecondsPassed;
     }
 
-    computeTwoDigitNumber(value: number) {
+    computeTwoDigitNumber(value: number): string {
         let result = '  ';
         if (value >= 0 && value < 10) {
             result = `0${value}`;
@@ -40,15 +40,15 @@ export class Chronometer {
         return result;
     }
 
-    stop() {
+    stop(): void {
         clearInterval(this.intervalId);
     }
 
-    reset() {
+    reset(): void {
         this.currentTime = 0;
     }
 
-    split() {
+    split(): string {
         let result = 'mm:ss:SS';
         let formattedMinutes = this.computeTwoDigitNumber(this.getMinutes());
         let formattedSeconds = this.computeTwoDigitNumber(this.getSeconds());
