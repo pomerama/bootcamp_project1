@@ -21,7 +21,7 @@ export class Game {
     constructor() {
         this.enemies = [];
         this.bullets = [];
-        this.gameStats = [];
+        this.gameStats = []; // elements of type { name: this.player.name, enemiesKilled: this.player.enemiesKilled, time: this.chronometer.split() }
         this.status = 'running';
         this.won = false;
 
@@ -65,6 +65,8 @@ export class Game {
         this.gameLoop()
     }
 
+
+
     loadGameStats() {
         const savedGameStats = localStorage.getItem("gameStats")
         if ((savedGameStats) && (savedGameStats.length > 0)) {
@@ -100,7 +102,16 @@ export class Game {
         }
         highScoreContainer.appendChild(highScoreUl);
     }
-
+    /* TODO: finish rework showing top ten instead of last ten on game end screen
+    getTopTen() {
+        this.loadGameStats();
+        if (this.gameStats.length == 0) return null;
+        if (this.gameStats.length == 1) return this.gameStats;
+        let sortedGameStats = this.gameStats.sort((a, b) => b.enemiesKilled - a.enemiesKilled);
+        let topTen = sortedGameStats.slice(0, 10);
+        console.log(topTen)
+    }
+    */
     wonLostDisplay() {
         if (this.won) {
             let wonDisplay = document.getElementById("end-won") as HTMLElement;
@@ -180,8 +191,8 @@ export class Game {
                 this.player.lives--;
                 enemy.element.remove();
                 this.enemies.splice(this.enemies.indexOf(enemy), 1);
-                let enemeyCollisionSFX = document.getElementById("sfx-enemy-collision") as HTMLAudioElement;
-                enemeyCollisionSFX.play();
+                let enemyCollisionSFX = document.getElementById("sfx-enemy-hits-player") as HTMLAudioElement;
+                enemyCollisionSFX.play();
             }
             // enemy moved out of screen
             if (enemy.left <= -this.gameBoardWidth) {
@@ -193,6 +204,8 @@ export class Game {
                 let currentBullet = this.bullets[0];
                 let bulletBox = currentBullet.element.getBoundingClientRect();
                 if (this.didCollide(bulletBox, enemyBox)) {
+                    let bulletCollisionSFX = document.getElementById("sfx-player-shoots-enemy") as HTMLAudioElement;
+                    bulletCollisionSFX.play();
                     this.player.enemiesKilled++;
                     enemy.element.remove();
                     this.enemies.splice(this.enemies.indexOf(enemy), 1);
