@@ -54,29 +54,27 @@
         </div>
 
         <div class="game screen" class="screen">
-            <h1>Game screen</h1>
-            <div id="game-board">
-                <div id="onscreen-stats">
-                    <p>Lives: <span id="info-lives"></span></p>
-                    <p>Kills: <span id="info-enemies-killed"></span></p>
-                    <section id="clock">
-                        <div id="sphere">
-                            Time: <span id="minDec" class="number">0</span><span id="minUni"
-                                class="number">0</span><span>:</span><span id="secDec" class="number">0</span><span
-                                id="secUni" class="number">0</span>
-                            <span id="centiseconds">
-                                :<span id="centisecDec">0</span><span id="centisecUni">0</span>
-                            </span>
-                        </div>
-                    </section>
-                </div>
+            <div id="onscreen-stats">
+                <p>Lives: <span id="info-lives"></span></p>
+                <p>Kills: <span id="info-enemies-killed"></span></p>
+                <section id="clock">
+                    <div id="sphere">
+                        Time: <span id="minDec" class="number">0</span><span id="minUni"
+                            class="number">0</span><span>:</span><span id="secDec" class="number">0</span><span
+                            id="secUni" class="number">0</span>
+                        <span id="centiseconds">
+                            :<span id="centisecDec">0</span><span id="centisecUni">0</span>
+                        </span>
+                    </div>
+                </section>
             </div>
-            <button id="end-game-button" class="btn" type="button">End game</button>
+            <div id="game-board"></div>
+            <div id="under-game-board"><button id="end-game-button" class="btn" type="button">End game</button></div>
+
             <audio id="sfx-enemy-collision" src="./assets/sound_effect_twinklesparkle.m4a" type="audio/x-m4a"></audio>
         </div>
 
         <div class="end screen" class="screen">
-            <h1>End screen</h1>
             <div class="game-stats">
                 <p><span id="end-won">Congratulations <span class="player-name"></span>, you won!</span></p>
                 <p><span id="end-lost">Better luck next time <span class="player-name"></span>, you can do it!</span>
@@ -86,7 +84,7 @@
                 <div id="high-score">
                     <h2>Last 10:</h2>
                 </div>
-                <button id="restart-game-button" class="btn" type="button">Restart game</button>
+                <button id="restart-game-button" class="btn" type="button">Try again</button>
             </div>
         </div>
 

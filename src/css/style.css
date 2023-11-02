@@ -178,6 +178,11 @@ button[type="button"]:hover {
     padding-top: 50px;
 }
 
+#onscreen-stats {
+    display: flex;
+
+}
+
 #game-board {
     background-color: skyblue;
     background-image: url("../../assets/mid_ground_cloud_1.png");
@@ -187,10 +192,22 @@ button[type="button"]:hover {
     position: relative;
 }
 
+#under-game-board {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+#end-game-button {
+    height: 50px;
+    margin-right: 20px;
+}
+
 #onscreen-stats {
-    height: 80px;
+    width: 100%;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .footer {
