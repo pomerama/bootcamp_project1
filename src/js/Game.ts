@@ -65,8 +65,6 @@ export class Game {
         this.gameLoop()
     }
 
-
-
     loadGameStats() {
         const savedGameStats = localStorage.getItem("gameStats")
         if ((savedGameStats) && (savedGameStats.length > 0)) {
@@ -91,27 +89,35 @@ export class Game {
     displayGameStats() {
         let highScoreContainer = document.getElementById("high-score") as HTMLDivElement;
         let highScoreUl = document.createElement("ul");
+        let topTen = this.getTopTen();
 
-        for (let i = this.gameStats.length - 1; i >= 0; i--) {
-            if (this.gameStats.length - i <= 10) {
+        if (topTen) {
+            for (let i = 0; i < topTen.length; i++) {
                 let highScoreLi = document.createElement("li");
-                highScoreLi.innerHTML = `${this.gameStats[i].name} | ${this.gameStats[i].enemiesKilled} | ${this.gameStats[i].time}`;
+                highScoreLi.innerHTML = `${topTen[i].name} | ${topTen[i].enemiesKilled} | ${topTen[i].time}`;
                 highScoreLi.style.listStyle = 'none';
                 highScoreUl.appendChild(highScoreLi);
             }
         }
         highScoreContainer.appendChild(highScoreUl);
     }
-    /* TODO: finish rework showing top ten instead of last ten on game end screen
+
     getTopTen() {
-        this.loadGameStats();
         if (this.gameStats.length == 0) return null;
         if (this.gameStats.length == 1) return this.gameStats;
-        let sortedGameStats = this.gameStats.sort((a, b) => b.enemiesKilled - a.enemiesKilled);
-        let topTen = sortedGameStats.slice(0, 10);
-        console.log(topTen)
+        // sort by enemies killed 
+        if (this.gameStats.length >= 2) {
+            let sortedGameStats = this.gameStats.sort((a, b) => {
+                if (a.enemiesKilled > b.enemiesKilled) return -1;
+                if (a.enemiesKilled < b.enemiesKilled) return 1;
+                return a.time - b.time; // TODO implement time comparison
+            });
+            let topTen = sortedGameStats.slice(0, 10);
+            return topTen
+        }
+        return null;
     }
-    */
+
     wonLostDisplay() {
         if (this.won) {
             let wonDisplay = document.getElementById("end-won") as HTMLElement;

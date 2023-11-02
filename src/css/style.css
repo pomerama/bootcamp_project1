@@ -179,12 +179,9 @@ button[type="button"]:hover {
 }
 
 #game-board {
-    background-color: skyblue;
-    background-image: url("../../assets/mid_ground_cloud_1.png");
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: url("../../assets/mid_ground_cloud_1.png");
     overflow: hidden;
-    position: relative;
+    animation: slideBackground 15s linear infinite;
 }
 
 #under-game-board {
@@ -252,9 +249,7 @@ button[type="button"]:hover {
 .footer ul {
     display: flex;
     padding: 20px 50px 50px 50px;
-    /* justify-content: space-evenly; */
     flex-wrap: wrap;
-
 }
 
 .footer ul li {
@@ -283,6 +278,21 @@ button[type="button"]:hover {
 }
 
 /* Animations */
+@keyframes slideBackground {
+    0% {
+        background-position: 1000px, 0;
+    }
+
+    50% {
+        background-position: 0, 0;
+    }
+
+    100% {
+        background-position: -1000px, 0;
+        /* background-position: -500px 0; */
+    }
+}
+
 @keyframes moveSpritesheet {
     from {
         transform: translate(0, 0);
