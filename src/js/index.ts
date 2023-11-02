@@ -9,6 +9,9 @@ const startGameButton = document.getElementById("start-game-button") as HTMLButt
 const endGameButton = document.getElementById("end-game-button") as HTMLButtonElement;
 const restartGameButton = document.getElementById("restart-game-button") as HTMLButtonElement;
 const playerNameInput = document.getElementById("player-name-input") as HTMLInputElement;
+const jumpButton = document.getElementById("jump-button") as HTMLButtonElement;
+const shootButton = document.getElementById("shoot-button") as HTMLButtonElement;
+
 
 startGameButton.addEventListener("click", button => {
     let playerName = '';
@@ -39,6 +42,14 @@ endGameButton.addEventListener("click", button => {
 
 restartGameButton.addEventListener("click", button => {
     window.location.reload();
+})
+
+jumpButton.addEventListener('click', () => {
+    game.player.jump();
+})
+
+shootButton.addEventListener('click', () => {
+    game.shootBullet();
 })
 
 // Chronometer

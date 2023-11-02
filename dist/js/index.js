@@ -6,6 +6,8 @@ const startGameButton = document.getElementById("start-game-button");
 const endGameButton = document.getElementById("end-game-button");
 const restartGameButton = document.getElementById("restart-game-button");
 const playerNameInput = document.getElementById("player-name-input");
+const jumpButton = document.getElementById("jump-button");
+const shootButton = document.getElementById("shoot-button");
 startGameButton.addEventListener("click", button => {
     let playerName = '';
     if (playerNameInput.value == '')
@@ -34,6 +36,12 @@ endGameButton.addEventListener("click", button => {
 });
 restartGameButton.addEventListener("click", button => {
     window.location.reload();
+});
+jumpButton.addEventListener('click', () => {
+    game.player.jump();
+});
+shootButton.addEventListener('click', () => {
+    game.shootBullet();
 });
 // Chronometer
 let minDec = document.getElementById('minDec');

@@ -190,12 +190,23 @@ button[type="button"]:hover {
 #under-game-board {
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: space-around;
 }
 
 #end-game-button {
     height: 50px;
-    margin-right: 20px;
+    margin-top: 50px;
+    margin-right: -100px;
+}
+
+#jump-button,
+#shoot-button {
+    background-color: unset;
+}
+
+#jump-button:active,
+#shoot-button:active {
+    transform: scale(0.95);
 }
 
 #onscreen-stats {
