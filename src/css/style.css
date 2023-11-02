@@ -4,7 +4,8 @@
     --clr-screen-color: #536B80;
     --clr-aside-color: #114573;
     --clr-footer-color: #B58C1B;
-    --font-family: system-ui;
+    --font-family: 'Be Vietnam Pro';
+    /* --font-family: system-ui; */
     --font-size: 1.125rem;
 }
 
@@ -84,6 +85,7 @@ body {
 
 .header h1 {
     font-size: xx-large;
+    font-family: 'Agbalumo';
 }
 
 .header .background-music-container {
@@ -115,8 +117,12 @@ body {
     justify-content: center;
 }
 
+.game-description {
+    padding-top: 100px;
+}
+
 .game-description p {
-    padding-top: 50px;
+    padding-top: 5px;
     width: 100%;
     text-align: center;
     font-size: larger;
@@ -162,6 +168,14 @@ button[type="button"]:hover {
     width: 200px;
     padding-top: 50px;
     text-align: center;
+}
+
+.game-info h2 {
+    text-decoration: underline;
+}
+
+.game-info p {
+    padding-top: 50px;
 }
 
 #game-board {
