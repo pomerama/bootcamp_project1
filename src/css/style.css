@@ -203,13 +203,28 @@ button[type="button"]:hover {
 
 .footer ul {
     display: flex;
-    padding: 20px 50px 0 50px;
+    padding: 20px 50px 50px 50px;
     justify-content: space-evenly;
+
 }
 
 .footer ul li {
     padding: 10px;
+    margin-right: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem -0.25rem;
+    background-color: #CC9E1F;
+    color: black;
 }
+
+.link:visited {
+    color: black;
+}
+
+.link:hover {
+    color: blue;
+}
+
 
 
 /* Helper */
