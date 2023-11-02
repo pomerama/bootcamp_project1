@@ -70,3 +70,24 @@ playPauseButton.addEventListener('click', () => {
         music.play();
     }
 });
+const muteButton = document.getElementById('mute-all');
+muteButton.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+muteButton.style.background = 'green';
+let muted = false;
+muteButton.addEventListener('click', (event) => {
+    const clickedElement = event.currentTarget;
+    let audioElements = document.querySelectorAll('audio');
+    for (let i = 0; i < audioElements.length; i++) {
+        let audio = audioElements[i];
+        audio.muted = !audio.muted;
+    }
+    if (!muted) {
+        clickedElement.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+        clickedElement.style.background = 'red';
+    }
+    else {
+        clickedElement.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+        clickedElement.style.background = 'green';
+    }
+    muted = !muted;
+});
