@@ -67,6 +67,7 @@ export class Game {
             if (this.gameStats.length - i <= 10) {
                 let highScoreLi = document.createElement("li");
                 highScoreLi.innerHTML = `${this.gameStats[i].name} | ${this.gameStats[i].enemiesKilled} | ${this.gameStats[i].time}`;
+                highScoreLi.style.listStyle = 'none';
                 highScoreUl.appendChild(highScoreLi);
             }
         }
@@ -89,7 +90,7 @@ export class Game {
     nameEnemiesKilledTimeDisplay() {
         let nameDisplays = document.querySelectorAll(".player-name");
         Array.from(nameDisplays).forEach((display) => {
-            display.innerHTML = `${this.player.name} `;
+            display.innerHTML = `${this.player.name}`;
         });
         let endEnemiesKilledDisplay = document.getElementById("end-enemies-killed");
         endEnemiesKilledDisplay.innerHTML = `${this.player.enemiesKilled} `;

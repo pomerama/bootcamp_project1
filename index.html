@@ -37,7 +37,7 @@
     </div>
 
     <main class="main">
-        <div class="start screen" class="screen">
+        <div class="start screen">
             <div class="game-description">
                 <p>You know and love it: simple endless sidescroller game :)</p>
                 <p>To win: survive 1 minute and/or kill 10 enemies !</p>
@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <div class="game screen" class="screen">
+        <div class="game screen">
             <div id="onscreen-stats">
                 <p>Lives: <span id="info-lives"></span></p>
                 <p>Kills: <span id="info-enemies-killed"></span></p>
@@ -74,21 +74,19 @@
             <audio id="sfx-enemy-collision" src="./assets/sound_effect_twinklesparkle.m4a" type="audio/x-m4a"></audio>
         </div>
 
-        <div class="end screen" class="screen">
+        <div class="end screen">
             <div class="game-stats">
                 <p><span id="end-won">Congratulations <span class="player-name"></span>, you won!</span></p>
-                <p><span id="end-lost">Better luck next time <span class="player-name"></span>, you can do it!</span>
-                </p>
                 <p>Time survived: <span id="end-time"></span></p>
                 <p>Enemies killed: <span id="end-enemies-killed"></span></p>
+                <p><span id="end-lost">Better luck next time <span class="player-name"></span>, you can do it!</span>
+                </p>
+                <button id="restart-game-button" class="btn" type="button">Try again</button>
                 <div id="high-score">
                     <h2>Last 10:</h2>
                 </div>
-                <button id="restart-game-button" class="btn" type="button">Try again</button>
             </div>
         </div>
-
-
 
         <aside class="aside">
             <div class="game-info">

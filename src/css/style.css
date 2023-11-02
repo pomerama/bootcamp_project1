@@ -178,11 +178,6 @@ button[type="button"]:hover {
     padding-top: 50px;
 }
 
-#onscreen-stats {
-    display: flex;
-
-}
-
 #game-board {
     background-color: skyblue;
     background-image: url("../../assets/mid_ground_cloud_1.png");
@@ -210,9 +205,35 @@ button[type="button"]:hover {
     align-items: center;
 }
 
+#clock {
+    width: 150px;
+}
+
+.end.screen {
+    justify-content: center;
+}
+
+.game-stats {
+    padding-top: 50px;
+}
+
+.game-stats * {
+    padding-top: 5px;
+}
+
+#restart-game-button {
+    margin-top: 30px;
+    margin-left: 35%;
+}
+
+#high-score {
+    margin-top: 30px;
+    border: 2px solid yellow;
+    text-align: center;
+}
+
 .footer {
     background-color: var(--clr-footer-color);
-    /* border: 2px solid yellow; */
     width: 1200px;
     padding-top: 20px;
     text-align: center;
