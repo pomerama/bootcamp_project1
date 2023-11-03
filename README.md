@@ -1,5 +1,17 @@
 # Ironhack bootcamp project 1 (Module 1)
 
+Simple 2d side scroller game build with HTML (no canvas), JS, CSS 
+
+## How to play:
+- Goal: manage to survive for 1 minute or shoot at least 10 enemies to win
+- You can jump to avoid enemies and shoot to kill them
+- Use onscreen buttons or "w" to jump and "j" to shoot
+- Each time an enemy "touches" you, you loose a life
+- If you loose all your lives its game over:)
+
+## Link to published github page:
+https://pomerama.github.io/bootcamp_project1/ 
+
 ## Goals (official):
 Browser based game, using HTML, CSS, JS, DOM manipulation, OOP
 - Render a game in the browser.
@@ -24,6 +36,8 @@ Browser based game, using HTML, CSS, JS, DOM manipulation, OOP
 - Extra features like CSS animations and transitions. Highly polished UI
 - Regular commits with clear messages
 - Deployed game is full functional with no errors preset
+
+---
 
 ## Game idea: basic infinite side scroller
 - Fallback in case parallax gets too tricky (with dom objects): very polished snake:)
